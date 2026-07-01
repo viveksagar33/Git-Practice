@@ -1,0 +1,35 @@
+def jump(nums):
+    n = len(nums)
+    if n == 1:
+        return 0
+    
+    jumps = 0
+    current_end = 0
+    farthest = 0
+    
+    for i in range(n - 1):
+        farthest = max(farthest, i + nums[i])
+        if i == current_end:
+            jumps += 1
+            current_end = farthest
+            if current_end >= n - 1:
+                break
+    
+    return jumps
+
+n = int(input())
+nums = list(map(int, input().split()))
+print(jump(nums))
+
+SELECT
+    r.RECIPE_NAME,
+    b.RECIPE_NAME AS BASE_RECIPE_NAME
+FROM RECIPES r
+INNER JOIN RECIPES b
+ON r.BASE_RECIPE_ID = b.RECIPE_ID;
+SELECT SUBJECT, AVG(SCORE) AS Average_Score
+FROM EXAM_SCORES
+GROUP BY SUBJECT;
+SELECT STUDENT_ID, COUNT(*) AS Total_Scores
+FROM EXAM_SCORES
+GROUP BY STUDENT_ID;
